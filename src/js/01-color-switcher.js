@@ -3,18 +3,21 @@ const stopButton = document.querySelector('[data-stop]');
 let changeColorInterval;
 
 document.body.classList.add('body', 'body--colorswitcher');
+stopButton.disabled = true;
 
 startButton.addEventListener('click', startChanges);
 stopButton.addEventListener('click', stopChanges);
 
 function startChanges() {
   startButton.disabled = true;
+  stopButton.disabled = false;
   setRandomBodyColor();
   changeColorInterval = setInterval(setRandomBodyColor, 1000);
 }
 
 function stopChanges() {
   startButton.disabled = false;
+  stopButton.disabled = true;
   clearInterval(changeColorInterval);
 }
 
